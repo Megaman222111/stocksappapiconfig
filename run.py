@@ -1,31 +1,8 @@
-import styvio
+import json
+import requests
 
-data = styvio.get_data('HKG: 9988')
+response = requests.get('https://dashboard.nbshare.io/api/v1/apps/reddit')
 
-companyDescription = data['companyDescription']
-
-logoURL = data['logoURL']
-
-currentPrice = data['currentPrice']
-
-newsArticle1 = data["newsArticle1"]
-newsArticle2 = data["newsArticle2"]
-newsArticle3 = data["newsArticle3"]
-
-newsLink1 = data["newsLink1"]
-newsLink2 = data["newsLink2"]
-newsLink3 = data["newsLink3"]
-
-print(companyDescription, "\n")
-
-print(logoURL, "\n")
-
-print(newsArticle1, "\n")
-print(newsArticle2, "\n")
-print(newsArticle3, "\n")
-
-print(newsLink1, "\n")
-print(newsLink2, "\n")
-print(newsLink3, "\n")
-
-print(currentPrice, "\n")
+arrays = json.loads(response.text)
+for array in arrays:
+    print(array['ticker'], "|", array['sentiment'], "|", array['sentiment_score'], "|", array['no_of_comments'])
