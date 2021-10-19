@@ -1,6 +1,6 @@
 import styvio
 
-data = styvio.get_data('TSLA')
+data = styvio.get_data('HKG: 9988')
 
 companyDescription = data['companyDescription']
 
